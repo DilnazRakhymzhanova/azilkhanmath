@@ -1,77 +1,49 @@
-// Функции для регистрации и входа
-function showRegister() {
-    document.getElementById('register-container').style.display = 'block';
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('start-game').style.display = 'none';
-    document.getElementById('in-game').style.display = 'none';
-    document.getElementById('end-game').style.display = 'none';
-}
-
-function showLogin() {
-    document.getElementById('register-container').style.display = 'none';
-    document.getElementById('login-container').style.display = 'block';
-}
-
-function register() {
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-    const confirmPassword = document.getElementById('register-confirm-password').value;
-    const feedback = document.getElementById('register-feedback');
-
-    if (password === confirmPassword) {
-        feedback.textContent = 'Регистрация успешна!';
-        feedback.className = 'feedback correct';
-        showLogin();
+// Register functionality
+document.getElementById('register-btn')?.addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if (username && password) {
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        alert('Registration successful! You can now log in.');
+        window.location.href = 'login.html';
     } else {
-        feedback.textContent = 'Пароли не совпадают!';
-        feedback.className = 'feedback incorrect';
+        alert('Please enter both username and password.');
     }
-}
+});
 
-function login() {
-    const email = document.getElementById('login-email').value;
+// Login functionality
+document.getElementById('login-btn')?.addEventListener('click', function() {
+    const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
-    const feedback = document.getElementById('login-feedback');
-
-    // Здесь можно добавить код для проверки учетных данных
-    if (email && password) {
-        feedback.textContent = 'Вход успешен!';
-        feedback.className = 'feedback correct';
-        document.getElementById('register-container').style.display = 'none';
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('start-game').style.display = 'block';
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+    if (username === storedUsername && password === storedPassword) {
+        window.location.href = 'game.html';
     } else {
-        feedback.textContent = 'Неправильный email или пароль!';
-        feedback.className = 'feedback incorrect';
+        alert('Incorrect username or password.');
     }
-}
+});
 
-// Оригинальный код для игры
-let n1, n2, opSelector, ansOpt, answer;
-const qNo = document.getElementById("Qno");
-const score = document.getElementById("score");
-const question = document.getElementById("question");
-const buttons = document.querySelectorAll(".answer-card button");
-const startBtn = document.getElementById("start-btn");
-const fScore = document.getElementById("final-score");
-const startBox = document.getElementById("start-game");
-const gameBox = document.getElementById("in-game");
-const endBox = document.getElementById("end-game");
-const progress = document.getElementById("progress");
-const message = document.getElementById("message");
-const operator = ['+', '-', '*', '/'];
+// Game functionality
+let n1;
+let n2;
+let opSelector;
+let ansOpt;
+let answer;
+let qNo = document.getElementById("Qno");
+let score = document.getElementById("score");
+let question = document.getElementById("question");
+let buttons = document.getElementsByTagName("button");
+let start = document.getElementById("start-btn");
+let fScore = document.getElementById("final-score");
+let startBox = document.getElementById("start-game");
+let gameBox = document.getElementById("in-game");
+let endBox = document.getElementById("end-game");
+let progress = document.getElementById("progress");
+let message = document.getElementById("message");
+let operator = ['+', '-', '*', '/'];
 let t;
-
-function startGame() {
-    score.innerHTML = "0";
-    qNo.innerHTML = "0";
-    nextQuestion();
-
-    gameBox.style.display = "block";
-    startBox.style.display = "none";
-    endBox.style.display = "none";
-    document.getElementById('timer').style.display = "block";
-}
 
 function restart() {
     score.innerHTML = "0";
@@ -103,37 +75,48 @@ function nextQuestion() {
     opSelector = operator[Math.floor(Math.random() * 4)];
 
     if (opSelector == "/") {
-        while (n2 === 0 || n1 % n2 !== 0 || n2 === 1) {
+        for (let i = 0; i < 200; i++) {
+            if (n1 % n2 == 0 && n1 != 0 && n2 != 0 && n2 != 1 && n1 != n2) {
+                break;
+            }
             n1 = Math.floor(Math.random() * 100);
             n2 = Math.floor(Math.random() * 100);
         }
     }
 
     if (opSelector == "*") {
-        while (n1 * n2 > 1000) {
+        for (let i = 0; i < 100; i++) {
+            if (n1 * n2 <= 1000) {
+                break;
+            }
             n1 = Math.floor(Math.random() * 50);
             n2 = Math.floor(Math.random() * 50);
         }
     }
-    question.innerHTML = `${n1} ${opSelector} ${n2} = ?`;
-    answer = eval(question.innerHTML.split('=')[0]);
+    question.innerHTML = n1 + opSelector + n2;
+    answer = eval(question.innerHTML);
+    question.innerHTML = question.innerHTML + " = ?";
 
     getOptions();
     getQNo();
 }
 
 function getOptions() {
-    let options = new Set();
-    while (options.size < 4) {
-        options.add(answer + Math.floor(Math.random() * 20) - 10);
-    }
-    options = Array.from(options);
-    ansOpt = Math.floor(Math.random() * 4);
-    options[ansOpt] = answer;
+    for (let i = 0; i < 4; i++) {
+        if (answer > 100) {
+            buttons[i].innerHTML = answer + Math.floor(Math.random() * answer * 0.4);
+        } else if (answer > 30 && answer < 100) {
+            buttons[i].innerHTML = answer + Math.floor(Math.random() * answer * 0.6);
+        } else {
+            buttons[i].innerHTML = Math.floor(Math.random() * 100);
+        }
 
-    buttons.forEach((btn, i) => {
-        btn.innerHTML = options[i];
-    });
+        if (answer < 0) {
+            buttons[i].innerHTML = "-" + buttons[i].innerHTML;
+        }
+    }
+    ansOpt = Math.floor(Math.random() * 4);
+    buttons[ansOpt].innerHTML = answer;
 }
 
 function getQNo() {
@@ -141,59 +124,38 @@ function getQNo() {
 }
 
 function getScore() {
-    score.innerHTML = parseInt(score.innerHTML) + 10;
+    score.innerHTML = parseInt(score.innerHTML) + parseInt(progress.style.width);
 }
 
 function doWhenCorrect(i) {
-    buttons[i].style.color = "#fff";
-    buttons[i].style.backgroundColor = "green";
+    buttons[i].style.color = "#ffffff";
+    buttons[i].style.backgroundColor = "#00796b";
     getScore();
 }
 
-function doWhenIncorrect(i) {
-    buttons[i].style.color = "#fff";
-    buttons[i].style.backgroundColor = "#fb3640";
-}
-
-function outro(i) {
-    setTimeout(() => {
-        nextQuestion();
-        buttons[i].style.color = "#000";
-        buttons[i].style.backgroundColor = "rgba(0, 0, 0, 0.1)";
-    }, 500);
-}
-
-function lastmessage() {
-    clearInterval(t);
-    if (fScore.innerText >= 800) {
-        message.innerHTML = "WOW !! UNBELIEVABLE !! &#128525;";
-    } else if (fScore.innerText >= 500) {
-        message.innerHTML = "TOO CLOSE !! &#128531;";
-    } else if (fScore.innerText >= 100) {
-        message.innerHTML = "Better luck next time &#128549;";
-    } else {
-        message.innerHTML = "Bad Luck &#128577;";
-    }
-}
-
 function timed() {
-    t = setInterval(() => {
-        progress.style.width = (parseInt(progress.style.width) - 1) + "%";
-        if (parseInt(progress.style.width) <= 0) {
-            clearInterval(t);
+    let timerWidth = 100;
+    let interval = setInterval(function() {
+        timerWidth -= 0.5;
+        progress.style.width = timerWidth + "%";
+        if (timerWidth <= 0) {
+            clearInterval(interval);
             nextQuestion();
         }
     }, 100);
 }
 
-buttons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        if (button.innerText == answer) {
-            doWhenCorrect(index);
-        } else {
-            doWhenIncorrect(index);
-        }
-        clearInterval(t);
-        outro(index);
-    });
-});
+function lastmessage() {
+    let finalScore = parseInt(score.innerHTML);
+    let messageText = "";
+
+    if (finalScore < 500) {
+        messageText = "Better luck next time!";
+    } else if (finalScore < 800) {
+        messageText = "Good job!";
+    } else {
+        messageText = "Excellent work!";
+    }
+
+    message.innerHTML = messageText;
+}

@@ -6,7 +6,7 @@ document.getElementById('register-btn')?.addEventListener('click', function() {
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
         alert('Registration successful! You can now log in.');
-        window.location.href = 'login.html';
+        window.location.href = 'login.html'; // Redirect to login page
     } else {
         alert('Please enter both username and password.');
     }
@@ -19,7 +19,7 @@ document.getElementById('login-btn')?.addEventListener('click', function() {
     const storedUsername = localStorage.getItem('username');
     const storedPassword = localStorage.getItem('password');
     if (username === storedUsername && password === storedPassword) {
-        window.location.href = 'game.html';
+        window.location.href = 'game.html'; // Redirect to game page
     } else {
         alert('Incorrect username or password.');
     }
@@ -35,8 +35,6 @@ let qNo = document.getElementById("Qno");
 let score = document.getElementById("score");
 let question = document.getElementById("question");
 let buttons = document.getElementsByTagName("button");
-let start = document.getElementById("start-btn");
-let fScore = document.getElementById("final-score");
 let startBox = document.getElementById("start-game");
 let gameBox = document.getElementById("in-game");
 let endBox = document.getElementById("end-game");
@@ -44,6 +42,10 @@ let progress = document.getElementById("progress");
 let message = document.getElementById("message");
 let operator = ['+', '-', '*', '/'];
 let t;
+
+function startGame() {
+    restart();
+}
 
 function restart() {
     score.innerHTML = "0";
@@ -133,16 +135,17 @@ function doWhenCorrect(i) {
     getScore();
 }
 
-function timed() {
-    let timerWidth = 100;
-    let interval = setInterval(function() {
-        timerWidth -= 0.5;
-        progress.style.width = timerWidth + "%";
-        if (timerWidth <= 0) {
-            clearInterval(interval);
-            nextQuestion();
-        }
-    }, 100);
+function doWhenIncorrect(i) {
+    buttons[i].style.color = "#ffffff";
+    buttons[i].style.backgroundColor = "#e53935";
+}
+
+function outro(i) {
+    setTimeout(() => {
+        nextQuestion();
+        buttons[i].style.color = "#000";
+        buttons[i].style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    }, 500);
 }
 
 function lastmessage() {
@@ -159,3 +162,52 @@ function lastmessage() {
 
     message.innerHTML = messageText;
 }
+
+function timed() {
+    let timerWidth = 100;
+    let interval = setInterval(function() {
+        timerWidth -= 0.5;
+        progress.style.width = timerWidth + "%";
+        if (timerWidth <= 0) {
+            clearInterval(interval);
+            nextQuestion();
+        }
+    }, 100);
+}
+
+buttons[0].addEventListener('click', () => {
+    if (buttons[0].innerText == answer) {
+        doWhenCorrect(0);
+    } else {
+        doWhenIncorrect(0);
+    }
+    clearInterval(t);
+    outro(0);
+});
+buttons[1].addEventListener('click', () => {
+    if (buttons[1].innerText == answer) {
+        doWhenCorrect(1);
+    } else {
+        doWhenIncorrect(1);
+    }
+    clearInterval(t);
+    outro(1);
+});
+buttons[2].addEventListener('click', () => {
+    if (buttons[2].innerText == answer) {
+        doWhenCorrect(2);
+    } else {
+        doWhenIncorrect(2);
+    }
+    clearInterval(t);
+    outro(2);
+});
+buttons[3].addEventListener('click', () => {
+    if (buttons[3].innerText == answer) {
+        doWhenCorrect(3);
+    } else {
+        doWhenIncorrect(3);
+    }
+    clearInterval(t);
+    outro(3);
+});

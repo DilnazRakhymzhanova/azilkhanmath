@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapmath</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 36px;
+            color: #007bff;
+            margin: 0;
+        }
+        .header p {
+            font-size: 24px;
+            margin: 10px 0 0;
+        }
+        .container, .auth-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .auth-container button, .container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .auth-container button:hover, .container button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            display: none;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .feedback.correct {
+            border-color: #28a745;
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        #chart-container {
+            margin-top: 20px;
+        }
+        .question {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #0000ff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .options button:hover {
+            background-color: #00bfff;
+        }
+        .options button.selected {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .next-btn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Tapmath</h1>
+        <p>Математический взрыв мозга!</p>
+    </div>
+
+    <!-- Регистрация -->
+    <div class="auth-container" id="register-container">
+        <h2>Регистрация</h2>
+        <div class="input-group">
+            <input type="email" id="register-email" placeholder="Введите электронную почту" />
+        </div>
+        <div class="input-group">
+            <input type="password" id="register-password" placeholder="Введите пароль" />
+        </div>
+        <div class="input-group">
+            <input type="password" id="register-confirm-password" placeholder="Подтвердите пароль" />
+        </div>
+        <button onclick="register()">Зарегистрироваться</button>
+        <div id="register-feedback" class="feedback"></div>
+        <p>Уже зарегистрированы? <a href="#" onclick="showLogin()">Войти</a></p>
+    </div>
+
+    <!-- Вход -->
+    <div class="auth-container" id="login-container" style="display: none;">
+        <h2>Вход</h2>
+        <div class="input-group">
+            <input type="email" id="login-email" placeholder="Введите электронную почту" />
+        </div>
+        <div class="input-group">
+            <input type="password" id="login-password" placeholder="Введите пароль" />
+        </div>
+        <button onclick="login()">Войти</button>
+        <div id="login-feedback" class="feedback"></div>
+        <p>Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрироваться</a></p>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="container" id="test-container" style="display: none;">
+        <div class="question" id="question">Вопрос будет здесь</div>
+        <div class="options" id="options">
+            <!-- Варианты ответов будут добавлены динамически -->
+        </div>
+        <div class="feedback correct" id="feedback-correct">Правильно!</div>
+        <div class="feedback incorrect" id="feedback-incorrect">
+            Неправильно! Для получения дополнительной информации, пожалуйста, обратитесь к нашему Телеграм-боту: <a href="https://t.me/your_telegram_bot" class="telegram-link" target="_blank">Перейти в Телеграм-бот</a>
+        </div>
+        <button class="next-btn" onclick="nextQuestion()">Следующий вопрос</button>
+    </div>
+
+    <div id="chart-container" class="container" style="display: none;">
+        <h2>Результаты теста</h2>
+        <canvas id="resultsChart"></canvas>
+    </div>
+
+    <!-- Подключаем Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "Какой язык используется для создания веб-страниц?",
+                options: ["Python", "Java", "HTML", "C++"],
+                answer: 2
+            },
+            {
+                question: "Какой тег используется для создания ссылки?",
+                options: ["<link>", "<a>", "<src>", "<href>"],
+                answer: 1
+            },
+            {
+                question: "Какой CSS-селектор используется для выбора элементов с классом?",
+                options: [".class", "#class", "class", "element"],
+                answer: 0
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+
+        function showRegister() {
+            document.getElementById('register-container').style.display = 'block';
+            document.getElementById('login-container').style.display = 'none';
+        }
+
+        function showLogin() {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        }
+
+        function register() {
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                document.getElementById('register-feedback').innerText = 'Пароли не совпадают';
+                document.getElementById('register-feedback').style.display = 'block';
+                return;
+            }
+
+            // Сохраняем данные регистрации в локальное хранилище
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+
+            document.getElementById('register-feedback').innerText = 'Регистрация успешна. Пожалуйста, войдите.';
+            document.getElementById('register-feedback').style.display = 'block';
+
+            // Ожидаем некоторое время и переходим к форме входа
+            setTimeout(showLogin, 2000);
+        }
+
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+
+            if (email === storedEmail && password === storedPassword) {
+                document.getElementById('login-feedback').style.display = 'none';
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('test-container').style.display = 'block';
+                loadQuestion();
+            } else {
+                document.getElementById('login-feedback').innerText = 'Неверные данные для входа';
+                document.getElementById('login-feedback').style.display = 'block';
+            }
+        }
+
+        function loadQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            document.getElementById('question').innerText = questionData.question;
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            questionData.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.onclick = () => checkAnswer(index, button);
+                optionsContainer.appendChild(button);
+            });
+            document.getElementById('feedback-correct').style.display = 'none';
+            document.getElementById('feedback-incorrect').style.display = 'none';
+            document.querySelector('.next-btn').style.display = 'none';
+        }
+
+        function checkAnswer(selectedIndex, selectedButton) {
+            const questionData = questions[currentQuestionIndex];
+            const buttons = document.querySelectorAll('#options button');
+
+            // Деактивируем все кнопки после выбора
+            buttons.forEach(button => button.disabled = true);
+
+            if (selectedIndex === questionData.answer) {
+                document.getElementById('feedback-correct').style.display = 'block';
+                document.getElementById('feedback-incorrect').style.display = 'none';
+                correctAnswers++;
+                selectedButton.classList.add('selected');
+            } else {
+                document.getElementById('feedback-correct').style.display = 'none';
+                document.getElementById('feedback-incorrect').style.display = 'block';
+                incorrectAnswers++;
+                selectedButton.classList.add('selected');
+            }
+            document.querySelector('.next-btn').style.display = 'block';
+            localStorage.setItem('currentQuestionIndex', currentQuestionIndex);
+            localStorage.setItem('correctAnswers', correctAnswers);
+            localStorage.setItem('incorrectAnswers', incorrectAnswers);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('test-container').style.display = 'none';
+            document.getElementById('chart-container').style.display = 'block';
+
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Правильные ответы', 'Неправильные ответы'],
+                    datasets: [{
+                        label: 'Результаты теста',
+                        data: [correctAnswers, incorrectAnswers],
+                        backgroundColor: ['#28a745', '#dc3545'],
+                        borderColor: ['#28a745', '#dc3545'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // При загрузке страницы проверяем, есть ли сохранённые данные
+        window.onload = function() {
+            const savedIndex = localStorage.getItem('currentQuestionIndex');
+            const savedCorrectAnswers = localStorage.getItem('correctAnswers');
+            const savedIncorrectAnswers = localStorage.getItem('incorrectAnswers');
+
+            if (savedIndex !== null) {
+                currentQuestionIndex = parseInt(savedIndex, 10);
+                correctAnswers = parseInt(savedCorrectAnswers || '0', 10);
+                incorrectAnswers = parseInt(savedIncorrectAnswers || '0', 10);
+                document.getElementById('register-container').style.display = 'none';
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('test-container').style.display = 'block';
+                loadQuestion();
+            } else {
+                document.getElementById('register-container').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

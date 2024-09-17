@@ -1,77 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tapmath</title>
     <link rel="stylesheet" href="style.css">
+    <title>Registration</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Tapmath</h1>
-        <p>Математический взрыв мозга!</p>
-    </div>
-
-    <!-- Регистрация -->
-    <div class="auth-container" id="register-container">
-        <h2>Регистрация</h2>
-        <input type="email" id="register-email" placeholder="Введите электронную почту" />
-        <input type="password" id="register-password" placeholder="Введите пароль" />
-        <input type="password" id="register-confirm-password" placeholder="Подтвердите пароль" />
-        <button onclick="register()">Зарегистрироваться</button>
-        <div id="register-feedback" class="feedback"></div>
-        <p>Уже зарегистрированы? <a href="#" onclick="showLogin()">Войти</a></p>
-    </div>
-
-    <!-- Вход -->
-    <div class="auth-container" id="login-container" style="display: none;">
-        <h2>Вход</h2>
-        <input type="email" id="login-email" placeholder="Введите электронную почту" />
-        <input type="password" id="login-password" placeholder="Введите пароль" />
-        <button onclick="login()">Войти</button>
-        <div id="login-feedback" class="feedback"></div>
-        <p>Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрироваться</a></p>
-    </div>
-
-    <!-- Начальная страница игры -->
-    <div class="container" id="start-game">
-        <h1>Добро пожаловать в математическую викторину.</h1>
-        <p>Нажмите кнопку ниже, чтобы начать игру</p>
-        <button id="start-btn" onclick="startGame()">ПОЕХАЛИ</button>
-    </div>
-
-    <!-- Игровой процесс -->
-    <div class="container" id="in-game" style="display: none;">
-        <div class="top-section">
-            <h1>Математическая игра</h1>
-            <div class="game-data">
-                <p>Вопрос: <span id="Qno">0</span>/10</p>
-                <p>Очки: <span id="score">0</span></p>
-            </div>
-            <div id="timer">
-                <div id="progress"></div>
-            </div>
-        </div>
-        <div class="question-card">
-            <h1 id="question">Вопрос будет здесь</h1>
-        </div>
-        <h3>Выберите правильный вариант:</h3>
-        <div class="answer-card">
-            <button>A</button>
-            <button>B</button>
-            <button>C</button>
-            <button>D</button>
+    <div class="container">
+        <div id="registration">
+            <h1>Register</h1>
+            <p>Enter your details to create an account</p>
+            <input type="text" id="username" placeholder="Username" />
+            <input type="password" id="password" placeholder="Password" />
+            <button id="register-btn">Register</button>
+            <p>Already have an account? <a href="login.html">Login here</a></p>
         </div>
     </div>
-
-    <!-- Конец игры -->
-    <div class="container" id="end-game" style="display: none;">
-        <h1>&#128515</h1>
-        <h1>Ваши общие очки: <span id="final-score">0</span> / 1000</h1>
-        <p id="message"></p>
-        <button id="restart-btn" onclick="restart()">ИГРАТЬ ЕЩЕ РАЗ</button>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>

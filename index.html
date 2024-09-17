@@ -15,15 +15,9 @@
     <!-- Регистрация -->
     <div class="auth-container" id="register-container">
         <h2>Регистрация</h2>
-        <div class="input-group">
-            <input type="email" id="register-email" placeholder="Введите электронную почту" />
-        </div>
-        <div class="input-group">
-            <input type="password" id="register-password" placeholder="Введите пароль" />
-        </div>
-        <div class="input-group">
-            <input type="password" id="register-confirm-password" placeholder="Подтвердите пароль" />
-        </div>
+        <input type="email" id="register-email" placeholder="Введите электронную почту" />
+        <input type="password" id="register-password" placeholder="Введите пароль" />
+        <input type="password" id="register-confirm-password" placeholder="Подтвердите пароль" />
         <button onclick="register()">Зарегистрироваться</button>
         <div id="register-feedback" class="feedback"></div>
         <p>Уже зарегистрированы? <a href="#" onclick="showLogin()">Войти</a></p>
@@ -32,12 +26,8 @@
     <!-- Вход -->
     <div class="auth-container" id="login-container" style="display: none;">
         <h2>Вход</h2>
-        <div class="input-group">
-            <input type="email" id="login-email" placeholder="Введите электронную почту" />
-        </div>
-        <div class="input-group">
-            <input type="password" id="login-password" placeholder="Введите пароль" />
-        </div>
+        <input type="email" id="login-email" placeholder="Введите электронную почту" />
+        <input type="password" id="login-password" placeholder="Введите пароль" />
         <button onclick="login()">Войти</button>
         <div id="login-feedback" class="feedback"></div>
         <p>Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрироваться</a></p>
@@ -47,17 +37,15 @@
     <div class="container" id="start-game">
         <h1>Добро пожаловать в математическую викторину.</h1>
         <p>Нажмите кнопку ниже, чтобы начать игру</p>
-        <a id="start-btn" onclick="startGame()">ПОЕХАЛИ</a>
+        <button id="start-btn" onclick="startGame()">ПОЕХАЛИ</button>
     </div>
 
     <!-- Игровой процесс -->
-    <div class="container" id="in-game">
+    <div class="container" id="in-game" style="display: none;">
         <div class="top-section">
             <h1>Математическая игра</h1>
             <div class="game-data">
-                <p>Вопрос:
-                    <span id="Qno">0</span>/10
-                </p>
+                <p>Вопрос: <span id="Qno">0</span>/10</p>
                 <p>Очки: <span id="score">0</span></p>
             </div>
             <div id="timer">
@@ -67,21 +55,21 @@
         <div class="question-card">
             <h1 id="question">Вопрос будет здесь</h1>
         </div>
-        <h3>Выберите правильный вариант: </h3>
+        <h3>Выберите правильный вариант:</h3>
         <div class="answer-card">
-            <button>Вариант A</button>
-            <button>Вариант B</button>
-            <button>Вариант C</button>
-            <button>Вариант D</button>
+            <button>A</button>
+            <button>B</button>
+            <button>C</button>
+            <button>D</button>
         </div>
     </div>
 
     <!-- Конец игры -->
-    <div class="container" id="end-game">
+    <div class="container" id="end-game" style="display: none;">
         <h1>&#128515</h1>
         <h1>Ваши общие очки: <span id="final-score">0</span> / 1000</h1>
         <p id="message"></p>
-        <a id="restart-btn" onclick="restart()">ИГРАТЬ ЕЩЕ РАЗ</a>
+        <button id="restart-btn" onclick="restart()">ИГРАТЬ ЕЩЕ РАЗ</button>
     </div>
 
     <script src="script.js"></script>

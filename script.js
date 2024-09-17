@@ -1,4 +1,4 @@
-// Оригинальный код для регистрации и входа
+// Функции для регистрации и входа
 function showRegister() {
     document.getElementById('register-container').style.display = 'block';
     document.getElementById('login-container').style.display = 'none';
@@ -19,7 +19,6 @@ function register() {
     const feedback = document.getElementById('register-feedback');
 
     if (password === confirmPassword) {
-        // Здесь можно добавить код для регистрации пользователя
         feedback.textContent = 'Регистрация успешна!';
         feedback.className = 'feedback correct';
         showLogin();
@@ -48,23 +47,19 @@ function login() {
 }
 
 // Оригинальный код для игры
-let n1;
-let n2;
-let opSelector;
-let ansOpt;
-let answer;
-let qNo = document.getElementById("Qno");
-let score = document.getElementById("score");
-let question = document.getElementById("question");
-let buttons = document.getElementsByTagName("button");
-let start = document.getElementById("start-btn");
-let fScore = document.getElementById("final-score");
-let startBox = document.getElementById("start-game");
-let gameBox = document.getElementById("in-game");
-let endBox = document.getElementById("end-game");
-let progress = document.getElementById("progress");
-let message = document.getElementById("message");
-let operator = ['+', '-', '*', '/'];
+let n1, n2, opSelector, ansOpt, answer;
+const qNo = document.getElementById("Qno");
+const score = document.getElementById("score");
+const question = document.getElementById("question");
+const buttons = document.querySelectorAll(".answer-card button");
+const startBtn = document.getElementById("start-btn");
+const fScore = document.getElementById("final-score");
+const startBox = document.getElementById("start-game");
+const gameBox = document.getElementById("in-game");
+const endBox = document.getElementById("end-game");
+const progress = document.getElementById("progress");
+const message = document.getElementById("message");
+const operator = ['+', '-', '*', '/'];
 let t;
 
 function startGame() {
@@ -108,48 +103,37 @@ function nextQuestion() {
     opSelector = operator[Math.floor(Math.random() * 4)];
 
     if (opSelector == "/") {
-        for (let i = 0; i < 200; i++) {
-            if (n1 % n2 == 0 && n1 != 0 && n2 != 0 && n2 != 1 && n1 != n2) {
-                break;
-            }
+        while (n2 === 0 || n1 % n2 !== 0 || n2 === 1) {
             n1 = Math.floor(Math.random() * 100);
             n2 = Math.floor(Math.random() * 100);
         }
     }
 
     if (opSelector == "*") {
-        for (let i = 0; i < 100; i++) {
-            if (n1 * n2 <= 1000) {
-                break;
-            }
+        while (n1 * n2 > 1000) {
             n1 = Math.floor(Math.random() * 50);
             n2 = Math.floor(Math.random() * 50);
         }
     }
-    question.innerHTML = n1 + opSelector + n2;
-    answer = eval(question.innerHTML);
-    question.innerHTML = question.innerHTML + " = ?";
+    question.innerHTML = `${n1} ${opSelector} ${n2} = ?`;
+    answer = eval(question.innerHTML.split('=')[0]);
 
     getOptions();
     getQNo();
 }
 
 function getOptions() {
-    for (let i = 0; i < 4; i++ && i != ansOpt) {
-        if (answer > 100) {
-            buttons[i].innerHTML = answer + Math.floor(Math.random() * answer * 0.4);
-        } else if (answer > 30 && answer < 100) {
-            buttons[i].innerHTML = answer + Math.floor(Math.random() * answer * 0.6);
-        } else {
-            buttons[i].innerHTML = Math.floor(Math.random() * 100);
-        }
-
-        if (answer < 0) {
-            buttons[i].innerHTML = "-" + buttons[i].innerHTML;
-        }
+    let options = new Set();
+    while (options.size < 4) {
+        options.add(answer + Math.floor(Math.random() * 20) - 10);
     }
+    options = Array.from(options);
     ansOpt = Math.floor(Math.random() * 4);
-    buttons[ansOpt].innerHTML = answer;
+    options[ansOpt] = answer;
+
+    buttons.forEach((btn, i) => {
+        btn.innerHTML = options[i];
+    });
 }
 
 function getQNo() {
@@ -157,7 +141,7 @@ function getQNo() {
 }
 
 function getScore() {
-    score.innerHTML = parseInt(score.innerHTML) + parseInt(progress.style.width);
+    score.innerHTML = parseInt(score.innerHTML) + 10;
 }
 
 function doWhenCorrect(i) {
@@ -182,66 +166,34 @@ function outro(i) {
 function lastmessage() {
     clearInterval(t);
     if (fScore.innerText >= 800) {
-        let emoji = "&#128525";
-        message.innerHTML = "WOW !! UNBELIEVABLE !!" + emoji;
+        message.innerHTML = "WOW !! UNBELIEVABLE !! &#128525;";
     } else if (fScore.innerText >= 500) {
-        let emoji = "&#128531";
-        message.innerHTML = "TOO CLOSE !!" + emoji;
+        message.innerHTML = "TOO CLOSE !! &#128531;";
     } else if (fScore.innerText >= 100) {
-        let emoji = "&#128549";
-        message.innerHTML = "Better luck next time " + emoji;
+        message.innerHTML = "Better luck next time &#128549;";
     } else {
-        let emoji = "&#128577";
-        message.innerHTML = "Bad Luck " + emoji;
+        message.innerHTML = "Bad Luck &#128577;";
     }
 }
 
 function timed() {
     t = setInterval(() => {
         progress.style.width = (parseInt(progress.style.width) - 1) + "%";
-        if (parseInt(progress.style.width) == 0) {
+        if (parseInt(progress.style.width) <= 0) {
             clearInterval(t);
             nextQuestion();
         }
     }, 100);
 }
 
-buttons[0].addEventListener('click', () => {
-    if (buttons[0].innerText == answer) {
-        doWhenCorrect(0);
-    } else {
-        doWhenIncorrect(0);
-    }
-    clearInterval(t);
-    outro(0);
-});
-
-buttons[1].addEventListener('click', () => {
-    if (buttons[1].innerText == answer) {
-        doWhenCorrect(1);
-    } else {
-        doWhenIncorrect(1);
-    }
-    clearInterval(t);
-    outro(1);
-});
-
-buttons[2].addEventListener('click', () => {
-    if (buttons[2].innerText == answer) {
-        doWhenCorrect(2);
-    } else {
-        doWhenIncorrect(2);
-    }
-    clearInterval(t);
-    outro(2);
-});
-
-buttons[3].addEventListener('click', () => {
-    if (buttons[3].innerText == answer) {
-        doWhenCorrect(3);
-    } else {
-        doWhenIncorrect(3);
-    }
-    clearInterval(t);
-    outro(3);
+buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        if (button.innerText == answer) {
+            doWhenCorrect(index);
+        } else {
+            doWhenIncorrect(index);
+        }
+        clearInterval(t);
+        outro(index);
+    });
 });

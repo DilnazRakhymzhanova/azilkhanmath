@@ -3,45 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Математические Тесты</title>
+    <title>Тест по математике</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Математика для Всех</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="test.html">Тесты</a></li>
-                    <li><a href="explanations.html">Тесты</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
+        <!-- Вставьте здесь header -->
     </header>
 
     <main>
-        <section class="test-section">
-            <h2>Выберите тест</h2>
-            <button onclick="startTest(1)">Тест для Начинающих</button>
-            <button onclick="startTest(2)">Тест для Продвинутых</button>
-            <div id="test-container"></div>
-            <canvas id="resultChart" style="display: none;"></canvas>
-        </section>
+        <div class="test-container">
+            <h2 id="question">Вопрос</h2>
+            <div class="answers">
+                <button class="answer-btn">Ответ 1</button>
+                <button class="answer-btn">Ответ 2</button>
+                <button class="answer-btn">Ответ 3</button>
+            </div>
+            <div class="test-navigation">
+                <button id="prev">Предыдущий вопрос</button>
+                <button id="next">Следующий вопрос</button>
+                <button id="finish">Завершить тест</button>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Математика для Всех. Все права защищены.</p>
-            <p>Email: info@mathforall.ru | Телефон: +7 123 456 7890</p>
-        </div>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

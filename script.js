@@ -80,4 +80,4 @@ function updateNavigationButtons() {
     
     prevButton.disabled = currentQuestionIndex === 0;
     nextButton.innerText = currentQuestionIndex === questions[1].length - 1 ? "Завершить тест" : "Следующий вопрос";
-}
+} //hhhhh

@@ -1,100 +1,76 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
     background-color: #4CAF50;
-    color: white;
-    padding: 15px 0;
+    padding: 20px 0;
+    text-align: center;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+header .logo h1 {
+    color: #fff;
+    font-size: 36px;
 }
 
-.navbar__logo a {
-    color: white;
-    text-decoration: none;
-    font-size: 24px;
-}
-
-.navbar__menu {
+nav ul {
     list-style: none;
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
-.navbar__menu li {
-    margin-left: 20px;
+nav ul li {
+    margin: 0 20px;
 }
 
-.navbar__menu li a {
+nav ul li a {
     color: white;
     text-decoration: none;
+    font-size: 18px;
 }
 
 .hero {
-    background-color: #f4f4f4;
+    padding: 50px;
     text-align: center;
-    padding: 50px 20px;
 }
 
-.courses {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+.test-section {
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: center;
 }
 
-.course-box {
-    background-color: #e2e2e2;
-    margin: 15px 0;
-    padding: 20px;
-    border-radius: 5px;
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 18px;
 }
 
-.footer {
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
     background-color: #333;
     color: white;
-    padding: 20px;
     text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-}
-
-.footer-col {
-    width: 30%;
-}
-
-.footer-col h4 {
-    margin-bottom: 10px;
-}
-
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-col ul li {
-    margin-bottom: 8px;
-}
-
-.footer-col ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.social-links a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
+footer .footer-content {
+    margin-top: 10px;
 }

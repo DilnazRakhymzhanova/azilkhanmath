@@ -3,39 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Математика для Всех</title>
+    <title>Главная - MATH LEARNING</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo">
-                <h1>Математика для Всех</h1>
+            <div class="navbar__logo">
+                <a href="index.html">MATH LEARNING</a>
             </div>
-            <nav>
+            <nav class="navbar__menu">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
-                    <li><a href="test.html">Тесты</a></li>
-                     <li><a href="explanations.html">Тесты</a></li>
+                    <li><a href="test.html">Тесты по математике</a></li>
+                    <li><a href="explanations.html">Объяснения</a></li>
                     <li><a href="about.html">О нас</a></li>
                     <li><a href="contact.html">Контакты</a></li>
                 </ul>
             </nav>
+            <div class="header-contact-info">
+                <p>Email: info@mathlearning.com</p>
+                <p>Телефон: +1 234 567 890</p>
+            </div>
         </div>
     </header>
 
+    <!-- Основной контент страницы -->
     <main>
-        <section class="hero">
-            <h2>Добро пожаловать в мир математики!</h2>
-            <p>Тренируйте свои математические навыки с нашими тестами для всех уровней.</p>
+        <section class="carousel">
+            <!-- Добавьте здесь код карусели -->
+        <div class="slides">
+            <div class="slide active">Слайд 1: Описание сайта</div>
+            <div class="slide">Слайд 2: Преимущества тестирования</div>
+            <div class="slide">Слайд 3: Как это работает</div>
+        </div>
+        <button class="prev" onclick="prevSlide()">❮</button>
+        <button class="next" onclick="nextSlide()">❯</button>
+        </section>
+
+        <section class="info">
+            <h1>Добро пожаловать на сайт по изучению математики</h1>
+            <p>Здесь вы можете пройти тесты на разных уровнях сложности.</p>
+        </section>
+
+        <section class="test-options">
+            <div class="test-card">
+                <h2>Уровень 1</h2>
+                <p>Тест на базовые знания</p>
+            </div>
+            <div class="test-card">
+                <h2>Уровень 2</h2>
+                <p>Тест на продвинутый уровень</p>
+            </div>
+        </section>
+
+        <section class="subject-cards">
+            <div class="subject-card">
+                <h3>Физика</h3>
+            </div>
+            <div class="subject-card">
+                <h3>Химия</h3>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Математика для Всех. Все права защищены.</p>
-            <p>Email: info@mathforall.ru | Телефон: +7 123 456 7890</p>
-        </div>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Learning</title>
+    <title>Математические Тесты</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Math Learning</h1>
+                <h1>Математика для Всех</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="test.html">Math Test</a></li>
-                    <li><a href="explanations.html">Explanations</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="test.html">Тесты</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,28 +26,19 @@
 
     <main>
         <section class="test-section">
-            <h2>Select a Math Test</h2>
-            <button onclick="startTest(1)">Test Variant 1</button>
-            <button onclick="startTest(2)">Test Variant 2</button>
+            <h2>Выберите тест</h2>
+            <button onclick="startTest(1)">Тест для Начинающих</button>
+            <button onclick="startTest(2)">Тест для Продвинутых</button>
             <div id="test-container"></div>
+            <canvas id="resultChart" style="display: none;"></canvas>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-                <p>&copy; 2024 Math Learning. All rights reserved.</p>
-                <p>Contact us: info@mathlearning.com | Phone: +1 234 567 890</p>
-            </div>
+        <div class="footer-content">
+            <p>&copy; 2024 Математика для Всех. Все права защищены.</p>
+            <p>Email: info@mathforall.ru | Телефон: +7 123 456 7890</p>
         </div>
     </footer>
-
-    <script src="script.js" defer></script>
 </body>
 </html>

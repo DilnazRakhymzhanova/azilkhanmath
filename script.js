@@ -1,18 +1,18 @@
 const tests = {
     1: [
-        { question: "Сколько будет 2 + 2?", answer: "4" },
-        { question: "Сколько будет 3 * 3?", answer: "9" },
-        { question: "Сколько будет 10 - 7?", answer: "3" },
-        { question: "Сколько будет 12 / 4?", answer: "3" },
-        { question: "Сколько будет 5 + 5?", answer: "10" },
+        { question: "Сколько будет 1/2 + 1/3?", answer: "5/6" },
+        { question: "Сколько будет 3/4 - 1/4?", answer: "1/2" },
+        { question: "Сколько будет 2/5 * 3?", answer: "6/5" },
+        { question: "Сколько будет 6/8 / 2?", answer: "3/8" },
+        { question: "Сколько будет 1/4 + 3/4?", answer: "1" }
     ],
     2: [
-        { question: "Сколько будет 5 * 6?", answer: "30" },
-        { question: "Сколько будет 24 / 3?", answer: "8" },
-        { question: "Сколько будет 15 + 7?", answer: "22" },
-        { question: "Сколько будет 9 * 9?", answer: "81" },
-        { question: "Сколько будет 100 - 56?", answer: "44" },
-    ],
+        { question: "Сколько будет 5/6 - 1/2?", answer: "1/3" },
+        { question: "Сколько будет 7/8 * 2/3?", answer: "7/12" },
+        { question: "Сколько будет 9/4 / 3/2?", answer: "3/2" },
+        { question: "Сколько будет 3/5 + 7/10?", answer: "13/10" },
+        { question: "Сколько будет 2/7 * 5/3?", answer: "10/21" }
+    ]
 };
 
 function startTest(variant) {

@@ -1,13 +1,5 @@
 // Карусель (просто заглушка)
-document.addEventListener('DOMContentLoaded', function () {
-    let carouselIndex = 0;
-    const carouselElements = document.querySelectorAll('.carousel-item');
-    setInterval(function () {
-        carouselElements[carouselIndex].classList.remove('active');
-        carouselIndex = (carouselIndex + 1) % carouselElements.length;
-        carouselElements[carouselIndex].classList.add('active');
-    }, 3000);
-});
+
 
 // Функционал для теста
 let currentQuestionIndex = 0;

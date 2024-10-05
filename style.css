@@ -1,11 +1,25 @@
 /* Основные стили для header и footer */
 body {
-    background-color : #FCFAEE;
+    background-color: #80C4E9; /* Цвет фона страницы */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем отступы по умолчанию */
 }
+
+/* Основной контейнер для всех секций */
+.card-container {
+    background-color: white; /* Цвет фона для карточки */
+    padding: 20px; /* Отступы внутри карточки */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для карточки */
+    max-width: 1200px; /* Максимальная ширина карточки */
+    margin: 0 auto; /* Центрируем карточку по горизонтали */
+}
+
 footer {
-    background-color: #001F3F; /* Цвет header и footer */
+    background-color: #001F3F; /* Цвет footer */
     padding: 20px 0;
 }
+
 /* Стиль для header */
 header {
     background-color: #001F3F; /* Цвет фона хедера */
@@ -34,39 +48,33 @@ header .nav-link:hover {
 }
 
 .carousel-inner img {
-    width: 60%; /* Ширина карусели */
+    width: 100%; /* Ширина карусели */
     height: 500px; /* Высота карусели */
     object-fit: cover; /* Изображение адаптируется к размерам */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: transparent; /* Убираем цвет стрелок */
+    background-color: transparent; /* Убираем фон у кнопок */
 }
 
-/* Стиль для секций */
-section {
-    padding: 60px 0; /* Увеличенное расстояние между секциями */
+/* Стили для секции About */
+#about {
+    background-color: #f8f9fa; /* Цвет фона для секции "О нас" */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 20px; /* Отступы внутри секции */
 }
 
-/* Стиль для карточки отзывов */
-.testimonial-card {
-    background-color: #f8f9fa;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+/* Стили для списка тестов */
+#test-levels .list-group-item {
+    background-color: #f8f9fa; /* Цвет фона для элементов списка */
+    border: 1px solid #ddd; /* Граница для элементов списка */
+    margin-bottom: 10px; /* Отступ между элементами списка */
 }
 
-.testimonial-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.testimonial-card p {
-    font-size: 16px;
-    color: #555;
+/* Стили для отзывов */
+#reviews .card {
+    margin-bottom: 20px; /* Отступ между карточками отзывов */
 }
 
 /* Центрирование теста и карточка */
@@ -93,12 +101,12 @@ section {
     margin: 10px auto; /* Центрирование кнопок */
     padding: 10px 20px; /* Увеличенные размеры кнопок */
     font-size: 18px; /* Размер текста на кнопках */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    background-color: #007bff; /* Цвет кнопок ответов */
+    color: white; /* Цвет текста на кнопках */
+    border: none; /* Убираем границы кнопок */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
 }
 
 .answer-button:hover {
@@ -107,17 +115,24 @@ section {
 
 /* Кнопки управления */
 #prev-button, #next-button, #submit-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
+    padding: 10px 20px; /* Отступы внутри кнопок */
+    margin: 10px; /* Отступ между кнопками */
+    font-size: 16px; /* Размер текста на кнопках */
     background-color: #001F3F; /* Цвет кнопок управления */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    color: white; /* Цвет текста на кнопках */
+    border: none; /* Убираем границы кнопок */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
 }
 
 #prev-button:hover, #next-button:hover, #submit-button:hover {
     background-color: #004080; /* Цвет при наведении */
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    #about {
+        text-align: left; /* Выравниваем текст по левому краю на мобильных устройствах */
+    }
 }

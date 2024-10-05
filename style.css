@@ -28,6 +28,7 @@ header {
 
 header .navbar-nav .nav-link {
     color: #fff !important; /* Цвет текста в навигации */
+    font-size: 16px;
 }
 
 header .navbar-brand {
@@ -115,7 +116,7 @@ header .nav-link:hover {
 
  .option-button {
     width: 30%; /* Ширина кнопки */
-    margin: 10px 0;
+    margin-bottom: 50px;
     font-size: 16px; /* Размер текста на кнопках */
     background-color: #001F3F; /* Цвет кнопок управления */
     color: white; /* Цвет текста на кнопках */

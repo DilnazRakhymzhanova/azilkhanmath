@@ -37,7 +37,11 @@
         <h2>Тест Уровень I</h2>
         <div id="test-section" style="display: none;">
             <div id="question"></div>
-            <div id="options"></div>
+
+            <!-- Оборачиваем варианты ответа в flex-column -->
+            <div id="options" class="d-flex flex-column mb-4">
+                <!-- Варианты ответов будут выводиться здесь -->
+            </div>
 
             <!-- Оборачиваем кнопки в div с вертикальным выравниванием -->
             <div class="d-flex flex-column">
@@ -64,21 +68,36 @@
 
     <script src="script.js"></script>
     <script>
-        startTest('level1'); // Инициализируем тест для уровня I
+        // Пример заполнения вариантов ответов
+        function loadQuestion(questionData) {
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = ''; // Очищаем предыдущие варианты
 
-        // Функция для обновления прогресс-баров
-        function updateProgressBars(correctCount, totalQuestions) {
-            const correctPercentage = (correctCount / totalQuestions) * 100;
-            const incorrectPercentage = 100 - correctPercentage;
+            questionData.options.forEach(option => {
+                const button = document.createElement('button');
+                button.classList.add('btn', 'btn-outline-primary', 'mb-2'); // Добавляем классы для кнопок
+                button.textContent = option;
+                button.onclick = () => selectOption(option); // Функция для выбора ответа
+                optionsDiv.appendChild(button); // Добавляем кнопку в div
+            });
+        }
 
-            // Обновляем индикаторы прогресса
-            document.getElementById('correct-progress').style.width = `${correctPercentage}%`;
-            document.getElementById('correct-progress').setAttribute('aria-valuenow', correctPercentage);
-            document.getElementById('correct-progress').textContent = `${Math.round(correctPercentage)}%`;
+        // Пример данных вопроса
+        const questionData = {
+            question: "Какой это пример вопроса?",
+            options: ["Ответ 1", "Ответ 2", "Ответ 3", "Ответ 4"]
+        };
 
-            document.getElementById('incorrect-progress').style.width = `${incorrectPercentage}%`;
-            document.getElementById('incorrect-progress').setAttribute('aria-valuenow', incorrectPercentage);
-            document.getElementById('incorrect-progress').textContent = `${Math.round(incorrectPercentage)}%`;
+        // Запускаем тест
+        startTest('level1');
+
+        function startTest(level) {
+            loadQuestion(questionData); // Загружаем первый вопрос
+            document.getElementById('test-section').style.display = 'block'; // Показываем секцию тестов
+        }
+
+        function selectOption(option) {
+            console.log('Выбранный ответ:', option);
         }
     </script>
 

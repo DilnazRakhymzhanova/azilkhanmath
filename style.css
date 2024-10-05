@@ -6,7 +6,7 @@ footer {
 /* Стиль для header */
 header {
     background-color: #001F3F; /* Цвет фона хедера */
-    margin-bottom: 45px;
+    margin-bottom: 25px;
 }
 
 header .navbar-nav .nav-link {
@@ -27,12 +27,12 @@ header .nav-link:hover {
 
 /* Стили для карусели */
 .carousel {
-    margin-bottom: 70px; /* Отступ между каруселью и остальной страницей */
+    margin-bottom: 50px; /* Отступ между каруселью и остальной страницей */
 }
 
 .carousel-inner img {
-    width: 80%; /* Ширина карусели */
-    height: 400px; /* Высота карусели */
+    width: 60%; /* Ширина карусели */
+    height: 500px; /* Высота карусели */
     object-fit: cover; /* Изображение адаптируется к размерам */
 }
 

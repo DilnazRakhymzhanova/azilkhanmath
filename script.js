@@ -121,7 +121,7 @@ const allQuestions = {
             ],
         },
      ],
-       level3: [
+    level3: [
         {
             question: "Вопрос 1: Какой результат 9 + 6?",
             options: [

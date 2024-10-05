@@ -1,150 +1,121 @@
-
-/* General Layout */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    max-width: 1200px;
-    margin: auto;
-}
-
+/* Основные стили для header и footer */
 header, footer {
-    background-color: #001F3F;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-
-.container {
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* Carousel */
-.carousel {
-    width: 100%;
-    margin-bottom: 40px;
-}
-
-.carousel-item {
-    max-height: 450px;
-    overflow: hidden;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: auto;
-}
-
-.carousel-control-prev, .carousel-control-next {
-    background-color: transparent;
-    border: none;
-}
-
-/* Section spacing */
-section {
-    margin-bottom: 60px;
-}
-/* nttt */ 
-
-button {
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s;
-}
-/* nttt */
-#quiz-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#question {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-#options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Answer Buttons */
-button.answer-btn {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: left;
-}
-
-button.answer-btn:hover {
-    background-color: #0056b3;
-}
-
-button.answer-btn:focus {
-    outline: none;
-}
-/* nttt */
-
-.progress {
-    height: 30px;
-    margin-top: 20px;
-}
-/* Footer */
-footer {
-    text-align: center;
+    background-color: #001F3F; /* Цвет header и footer */
+    color: white; /* Белый цвет текста */
     padding: 20px 0;
-    color: white;
-    background-color: #001F3F;
+}
+/* Стиль для header */
+header {
+    background-color: #001F3F; /* Цвет фона хедера */
+    padding: 20px 0;
 }
 
-/* Testimonial Cards */
-.testimonial-cards {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
+header .navbar-nav .nav-link {
+    color: #fff !important; /* Цвет текста в навигации */
 }
 
+header .navbar-brand {
+    color: #fff !important; /* Цвет текста логотипа */
+}
+
+header .navbar-toggler-icon {
+    filter: invert(1); /* Делаем иконку меню белой на мобильных устройствах */
+}
+
+header .nav-link:hover {
+    color: #cccccc; /* Цвет текста при наведении */
+}
+
+/* Стили для карусели */
+.carousel {
+    margin-bottom: 30px; /* Отступ между каруселью и остальной страницей */
+}
+
+.carousel-inner img {
+    width: 100%; /* Ширина карусели */
+    height: 400px; /* Высота карусели */
+    object-fit: cover; /* Изображение адаптируется к размерам */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent; /* Убираем цвет стрелок */
+}
+
+/* Стиль для секций */
+section {
+    padding: 60px 0; /* Увеличенное расстояние между секциями */
+}
+
+/* Стиль для карточки отзывов */
 .testimonial-card {
-    background-color: white;
+    background-color: #f8f9fa;
     padding: 20px;
+    margin: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
     text-align: center;
-    margin: 10px;
+}
+
+.testimonial-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .testimonial-card p {
-    font-style: italic;
+    font-size: 16px;
+    color: #555;
 }
 
-.testimonial-card h4 {
-    margin-top: 15px;
+/* Центрирование теста и карточка */
+#quiz-container {
+    width: 50%; /* Размер карточки теста */
+    margin: 50px auto; /* Центрирование карточки по горизонтали и добавление отступа сверху */
+    background-color: #f8f9fa; /* Цвет фона карточки */
+    padding: 30px; /* Внутренний отступ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для карточки */
+    border-radius: 10px; /* Скругленные углы */
+    text-align: center; /* Текст по центру */
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .testimonial-cards {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Вопросы */
+#question {
+    font-size: 20px; /* Размер текста для вопроса */
+    margin-bottom: 20px; /* Отступ между вопросом и вариантами ответов */
+}
 
-    .testimonial-card {
-        width: 80%;
-    }
+/* Кнопки ответов */
+.answer-button {
+    display: block;
+    width: 80%; /* Ширина кнопок ответов */
+    margin: 10px auto; /* Центрирование кнопок */
+    padding: 10px 20px; /* Увеличенные размеры кнопок */
+    font-size: 18px; /* Размер текста на кнопках */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.answer-button:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+}
+
+/* Кнопки управления */
+#prev-button, #next-button, #submit-button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    background-color: #001F3F; /* Цвет кнопок управления */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#prev-button:hover, #next-button:hover, #submit-button:hover {
+    background-color: #004080; /* Цвет при наведении */
 }

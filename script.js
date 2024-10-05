@@ -2,63 +2,126 @@
 const allQuestions = {
     level1: [
         {
-            question: "Вопрос 1: Какой результат 2 + 2?",
+            question: "Вопрос 1: Представьте в виде смежной дроби 7/3 ?",
             options: [
-                { answer: "3", isCorrect: false },
-                { answer: "4", isCorrect: true },
-                { answer: "5", isCorrect: false },
+                { answer: "1 2/3", isCorrect: false },
+                { answer: "2 1/3", isCorrect: true },
+                { answer: "2 1/7", isCorrect: false },
                 { answer: "6", isCorrect: false },
             ],
         },
         {
-            question: "Вопрос 2: Какой результат 5 * 3?",
+            question: "Вопрос 2: Какой результат 75 * 36?",
             options: [
-                { answer: "15", isCorrect: true },
-                { answer: "10", isCorrect: false },
-                { answer: "20", isCorrect: false },
-                { answer: "25", isCorrect: false },
+                { answer: "2700", isCorrect: true },
+                { answer: "1675", isCorrect: false },
+                { answer: "2636", isCorrect: false },
+                { answer: "2075", isCorrect: false },
             ],
         },
         {
-            question: "Вопрос 3: Какой результат 10 - 6?",
+            question: "Вопрос 3: Сколько будет 0,2 * 100?",
             options: [
-                { answer: "4", isCorrect: true },
-                { answer: "5", isCorrect: false },
-                { answer: "6", isCorrect: false },
-                { answer: "3", isCorrect: false },
+                { answer: "20", isCorrect: true },
+                { answer: "2", isCorrect: false },
+                { answer: "200", isCorrect: false },
+                { answer: "0,2", isCorrect: false },
+            ],
+        },
+        {
+            question: "Вопрос 4: Выполните действия 12,3 + 16,1",
+            options: [
+                { answer: "28,4", isCorrect: true },
+                { answer: "27,5", isCorrect: false },
+                { answer: "27,4", isCorrect: false },
+                { answer: "28,1", isCorrect: false },
+            ],
+        },
+        {
+            question: "Вопрос 5: Запишите в виде десятичной дроби проценты 1%; 53%; 102%?",
+            options: [
+                { answer: "0,1; 0,5; 1", isCorrect: false },
+                { answer: "1; 53; 102", isCorrect: false },
+                { answer: "0,1; 0,53; 1,2", isCorrect: false },
+                { answer: "0,01; 0,53; 1,02", isCorrect: true },
+            ],
+        },
+        {
+            question: "Вопрос 6: Найдите |-56|",
+            options: [
+                { answer: "112", isCorrect: false },
+                { answer: "28", isCorrect: false },
+                { answer: "56", isCorrect: true },
+                { answer: "-56", isCorrect: false },
+            ],
+        },
+        {
+            question:"Вопрос 7: Вычислите -7 + (-14)",
+            options: [
+                { answer: "7", isCorrect: false },
+                { answer: "-21", isCorrect: true },
+                { answer: "-7", isCorrect: false },
+                { answer: "21", isCorrect: false },
+            ],
+        },
+        {
+            question: "Вопрос 8: |-8| * (-7)?",
+            options: [
+                { answer: "-15", isCorrect: false },
+                { answer: "1", isCorrect: false },
+                { answer: "56", isCorrect: false },
+                { answer: "-56", isCorrect: true },
             ],
         },
     ],
     level2: [
         {
-            question: "Вопрос 1: Какой результат 8 - 3?",
+            question: "Вопрос 1: Какая длина дороги, если самокат на скорости 100км/ч проехал его за 30 минут?",
             options: [
-                { answer: "5", isCorrect: true },
-                { answer: "4", isCorrect: false },
-                { answer: "3", isCorrect: false },
-                { answer: "6", isCorrect: false },
+                { answer: "50 км", isCorrect: true },
+                { answer: "100 км", isCorrect: false },
+                { answer: "30 км", isCorrect: false },
+                { answer: "40 км", isCorrect: false },
             ],
         },
         {
-            question: "Вопрос 2: Какой результат 12 / 4?",
+            question: "Вопрос 2: Сколько будет корень из 144?",
             options: [
-                { answer: "4", isCorrect: false },
-                { answer: "3", isCorrect: true },
+                { answer: "144", isCorrect: false },
+                { answer: "12", isCorrect: true },
+                { answer: "-12", isCorrect: false },
+                { answer: "-144", isCorrect: false },
+            ],
+        },
+        {
+            question: "Вопрос 3: Найдите значение х, если 2х=1?",
+            options: [
+                { answer: "1", isCorrect: false },
                 { answer: "2", isCorrect: false },
-                { answer: "5", isCorrect: false },
+                { answer: "0,5", isCorrect: true },
+                { answer: "ответа нет", isCorrect: false },
             ],
         },
         {
-            question: "Вопрос 3: Какой результат 7 + 5?",
+               question: "Вопрос 4: Вычислите отношение, 30 мин к 2 часам?",
             options: [
-                { answer: "11", isCorrect: false },
-                { answer: "12", isCorrect: false },
-                { answer: "13", isCorrect: true },
-                { answer: "14", isCorrect: false },
+                { answer: "0,3 ч к 2 ч", isCorrect: false },
+                { answer: "1 к 4", isCorrect: true },
+                { answer: "30 к 120", isCorrect: false },
+                { answer: "15 к 60", isCorrect: false },
             ],
         },
-    ],
-    level3: [
+        {
+               question: "Вопрос 5: Решите уравнение х : 10 = 3 : 2 ?",
+            options: [
+                { answer: "x=3", isCorrect: false },
+                { answer: "x=10", isCorrect: false },
+                { answer: "x=-15", isCorrect: false },
+                { answer: "x=15", isCorrect: true },
+            ],
+        },
+     ],
+       level3: [
         {
             question: "Вопрос 1: Какой результат 9 + 6?",
             options: [

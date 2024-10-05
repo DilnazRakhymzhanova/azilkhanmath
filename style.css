@@ -1,4 +1,7 @@
 /* Основные стили для header и footer */
+body {
+    background-color : #FCFAEE;
+}
 footer {
     background-color: #001F3F; /* Цвет header и footer */
     padding: 20px 0;

@@ -167,17 +167,19 @@ function showQuestion() {
     }
 
     const questionObj = currentQuestions[currentQuestionIndex];
-    document.getElementById('question').textContent = questionObj.question;
+    document.getElementById('question').textContent = questionObj.question; // Исправлено
 
     const optionsContainer = document.getElementById('options');
-    optionsContainer.innerHTML = '';
+    optionsContainer.innerHTML = ''; // Очищаем предыдущие варианты
 
     questionObj.options.forEach((option) => {
         const optionButton = document.createElement('button');
         optionButton.textContent = option.answer;
+        optionButton.className = 'btn btn-primary option-button'; // Добавляем класс для стилизации
         optionButton.onclick = () => checkAnswer(option.isCorrect);
         optionsContainer.appendChild(optionButton);
     });
+}
 
     // Установка состояния кнопок
     document.getElementById('prev-button').disabled = currentQuestionIndex === 0; // Деактивировать кнопку, если это первый вопрос

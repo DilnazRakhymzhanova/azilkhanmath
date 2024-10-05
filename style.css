@@ -6,7 +6,7 @@ footer {
 /* Стиль для header */
 header {
     background-color: #001F3F; /* Цвет фона хедера */
-    margin-bottom: 70px;
+    margin-bottom: 45px;
 }
 
 header .navbar-nav .nav-link {
@@ -31,7 +31,7 @@ header .nav-link:hover {
 }
 
 .carousel-inner img {
-    width: 100%; /* Ширина карусели */
+    width: 80%; /* Ширина карусели */
     height: 400px; /* Высота карусели */
     object-fit: cover; /* Изображение адаптируется к размерам */
 }

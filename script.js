@@ -179,11 +179,11 @@ function showQuestion() {
         optionButton.onclick = () => checkAnswer(option.isCorrect);
         optionsContainer.appendChild(optionButton);
     });
-}
 
-    // Установка состояния кнопок
-    document.getElementById('prev-button').disabled = currentQuestionIndex === 0; // Деактивировать кнопку, если это первый вопрос
-    document.getElementById('next-button').disabled = currentQuestionIndex === currentQuestions.length - 1; // Деактивировать кнопку, если это последний вопрос
+
+    // Управляем видимостью кнопок
+    document.getElementById('prev-button').style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
+    document.getElementById('next-button').style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'none' : 'inline-block';
 }
 
 function checkAnswer(isCorrect) {

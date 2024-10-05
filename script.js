@@ -209,6 +209,7 @@ const allQuestions = {
         },
     ],
 };
+
 let currentQuestions = [];
 let currentQuestionIndex = 0;
 let score = 0;
@@ -236,7 +237,7 @@ function showQuestion() {
     questionObj.options.forEach((option) => {
         const optionButton = document.createElement('button');
         optionButton.textContent = option.answer;
-        optionButton.className = 'answer'; // Добавляем класс для стилизации
+        optionButton.className = 'btn btn-primary option-button'; // Добавляем класс для стилизации
         optionButton.onclick = () => checkAnswer(option.isCorrect); // Обработка клика на ответ
         optionsContainer.appendChild(optionButton);
     });
@@ -279,7 +280,7 @@ function submitQuiz() {
 
 function showResults() {
     document.getElementById('test-section').style.display = 'none';
-    const resultMessage = `Вы ответили правильно на ${score} из ${currentQuestions.length} вопросов.`; // Исправлено
+    const resultMessage = `Вы ответили правильно на ${score} из ${currentQuestions.length} вопросов.`;
     document.getElementById('result-message').textContent = resultMessage;
     updateProgressBars(score, currentQuestions.length); // Обновляем прогресс-бары
     document.getElementById('result-section').style.display = 'block';

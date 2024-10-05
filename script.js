@@ -156,7 +156,7 @@ function startTest(level) {
     currentQuestions = allQuestions[level];
     currentQuestionIndex = 0;
     score = 0;
-    document.getElementById('test-section').style.display = 'block'; // Убедитесь, что этот элемент существует
+    document.getElementById('test-section').style.display = 'block';
     showQuestion();
 }
 
@@ -167,10 +167,10 @@ function showQuestion() {
     }
 
     const questionObj = currentQuestions[currentQuestionIndex];
-    document.getElementById('question').textContent = questionObj.question; // Исправлено
+    document.getElementById('question').textContent = questionObj.question;
 
     const optionsContainer = document.getElementById('options');
-    optionsContainer.innerHTML = ''; // Очищаем предыдущие варианты
+    optionsContainer.innerHTML = '';
 
     questionObj.options.forEach((option) => {
         const optionButton = document.createElement('button');
@@ -178,20 +178,41 @@ function showQuestion() {
         optionButton.onclick = () => checkAnswer(option.isCorrect);
         optionsContainer.appendChild(optionButton);
     });
+
+    // Установка состояния кнопок
+    document.getElementById('prev-button').disabled = currentQuestionIndex === 0; // Деактивировать кнопку, если это первый вопрос
+    document.getElementById('next-button').disabled = currentQuestionIndex === currentQuestions.length - 1; // Деактивировать кнопку, если это последний вопрос
 }
 
 function checkAnswer(isCorrect) {
     if (isCorrect) {
         score++;
     }
-    currentQuestionIndex++;
-    showQuestion();
+}
+
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion();
+    }
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < currentQuestions.length - 1) {
+        currentQuestionIndex++;
+        showQuestion();
+    }
+}
+
+function submitQuiz() {
+    showResults();
 }
 
 function showResults() {
     document.getElementById('test-section').style.display = 'none';
     const resultMessage = `Вы ответили правильно на ${score} из ${currentQuestions.length} вопросов.`;
     document.getElementById('result-message').textContent = resultMessage;
+    updateProgressBars(score, currentQuestions.length); // Обновляем прогресс-бары
     document.getElementById('result-section').style.display = 'block';
 }
 

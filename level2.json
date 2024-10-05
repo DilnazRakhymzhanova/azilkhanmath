@@ -1,10 +1,10 @@
 [
     {
-        "question": "Вопрос 1: Какой результат 2 + 2?",
+        "question": "Вопрос 1: Какой результат 1 + 2?",
         "options": [
-            { "answer": "3", "isCorrect": false },
-            { "answer": "4", "isCorrect": true },
-            { "answer": "5", "isCorrect": false },
+            { "answer": "2", "isCorrect": false },
+            { "answer": "4", "isCorrect": false },
+            { "answer": "3", "isCorrect": true },
             { "answer": "6", "isCorrect": false }
         ]
     },

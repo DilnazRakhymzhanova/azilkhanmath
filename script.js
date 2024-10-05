@@ -176,10 +176,9 @@ function showQuestion() {
         const optionButton = document.createElement('button');
         optionButton.textContent = option.answer;
         optionButton.className = 'btn btn-primary option-button'; // Добавляем класс для стилизации
-        optionButton.onclick = () => checkAnswer(option.isCorrect);
+        optionButton.onclick = () => checkAnswer(option.isCorrect); // Обработка клика на ответ
         optionsContainer.appendChild(optionButton);
     });
-
 
     // Управляем видимостью кнопок
     document.getElementById('prev-button').style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
@@ -187,9 +186,16 @@ function showQuestion() {
 }
 
 function checkAnswer(isCorrect) {
+    // Проверяем ответ и выводим сообщение
+    const feedbackMessage = isCorrect ? 'Правильно!' : 'Неправильно!';
+    alert(feedbackMessage);
+
     if (isCorrect) {
         score++;
     }
+
+    currentQuestionIndex++;
+    showQuestion(); // Переход к следующему вопросу
 }
 
 function prevQuestion() {

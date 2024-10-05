@@ -6,7 +6,7 @@ footer {
 /* Стиль для header */
 header {
     background-color: #001F3F; /* Цвет фона хедера */
-    padding: 20px 0;
+    margin-bottom: 70px;
 }
 
 header .navbar-nav .nav-link {

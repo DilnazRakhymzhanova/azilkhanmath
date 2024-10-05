@@ -218,3 +218,4 @@ function restartTest() {
     score = 0;
     loadQuestion();
 }
+

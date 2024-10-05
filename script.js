@@ -168,9 +168,9 @@ function showQuestion() {
     }
 
     const questionObj = currentQuestions[currentQuestionIndex];
-    document.getElementById('question-text').textContent = questionObj.question;
+    document.getElementById('question').textContent = questionObj.question;
 
-    const optionsContainer = document.getElementById('options-container');
+    const optionsContainer = document.getElementById('options');
     optionsContainer.innerHTML = ''; // Очищаем предыдущие варианты
 
     questionObj.options.forEach((option, index) => {

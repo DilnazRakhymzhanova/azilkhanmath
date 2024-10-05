@@ -281,7 +281,7 @@ function submitQuiz() {
 
 function showResults() {
     document.getElementById('test-section').style.display = 'none';
-    const resultMessage = `Вы ответили правильно на ${score} из ${currentQuestions.length} вопросов.`;
+    const resultMessage = Вы ответили правильно на ${score} из ${currentQuestions.length} вопросов.;
     document.getElementById('result-message').textContent = resultMessage;
     updateProgressBars(score, currentQuestions.length); // Обновляем прогресс-бары
     document.getElementById('result-section').style.display = 'block';

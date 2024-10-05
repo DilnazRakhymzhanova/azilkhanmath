@@ -156,8 +156,7 @@ function startTest(level) {
     currentQuestions = allQuestions[level];
     currentQuestionIndex = 0;
     score = 0;
-    document.getElementById('test-section').style.display = 'block';
-    document.getElementById('start-section').style.display = 'none';
+    document.getElementById('test-section').style.display = 'block'; // Убедитесь, что этот элемент существует
     showQuestion();
 }
 
@@ -168,12 +167,12 @@ function showQuestion() {
     }
 
     const questionObj = currentQuestions[currentQuestionIndex];
-    document.getElementById('question').textContent = questionObj.question;
+    document.getElementById('question').textContent = questionObj.question; // Исправлено
 
     const optionsContainer = document.getElementById('options');
     optionsContainer.innerHTML = ''; // Очищаем предыдущие варианты
 
-    questionObj.options.forEach((option, index) => {
+    questionObj.options.forEach((option) => {
         const optionButton = document.createElement('button');
         optionButton.textContent = option.answer;
         optionButton.onclick = () => checkAnswer(option.isCorrect);
@@ -198,8 +197,8 @@ function showResults() {
 
 function restartTest() {
     document.getElementById('result-section').style.display = 'none';
-    document.getElementById('start-section').style.display = 'block';
     currentQuestions = [];
     currentQuestionIndex = 0;
     score = 0;
+    startTest('level1'); // Запускаем тест заново
 }

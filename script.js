@@ -4,10 +4,16 @@ let score = 0;
 
 // Функция для загрузки вопросов из JSON
 async function loadQuestions(level) {
-    const response = await fetch(`${level}.json`);
-    const questions = await response.json();
-    currentQuestions = questions;
-    loadQuestion();
+    try {
+        const response = await fetch(`${level}.json`);
+        if (!response.ok) throw new Error('Ошибка загрузки файла');
+        const questions = await response.json();
+        currentQuestions = questions;
+        loadQuestion();
+    } catch (error) {
+        console.error(error);
+        alert('Не удалось загрузить вопросы. Пожалуйста, проверьте файл JSON.');
+    }
 }
 
 // Функция для инициализации теста
@@ -68,6 +74,3 @@ function restartTest() {
     score = 0;
     loadQuestion();
 }
-
-// Загружаем первый вопрос при загрузке страницы
-loadQuestion();

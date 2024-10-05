@@ -18,6 +18,15 @@ const questions = [
         ],
     },
     // Добавьте больше вопросов здесь
+    {
+        question: "Вопрос 2: Какой результат 10 * 4?",
+        options: [
+            { answer: "15", isCorrect: false },
+            { answer: "10", isCorrect: false },
+            { answer: "40", isCorrect: true },
+            { answer: "25", isCorrect: false },
+        ],
+    }
 ];
 
 let currentQuestionIndex = 0;

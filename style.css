@@ -1,119 +1,24 @@
-/* Стили для header */
+body {
+  font-family: Arial, sans-serif;
+}
+
 header {
-    background: linear-gradient(135deg, #4CAF50, #2E7D32);
-    color: white;
-    padding: 20px 0;
-    border-bottom: 5px solid #388E3C;
+  background-color: #f8f9fa;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+footer {
+  background-color: #f8f9fa;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
 }
 
-.navbar__logo a {
-    color: white;
-    font-size: 1.8rem;
-    text-decoration: none;
-    font-weight: bold;
+section {
+  margin-bottom: 2rem;
 }
 
-.navbar__menu ul {
-    list-style: none;
-    display: flex;
-}
-
-.navbar__menu ul li {
-    margin-left: 20px;
-}
-
-.navbar__menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-.navbar__menu ul li a:hover {
-    color: #A5D6A7;
-}
-
-.header-contact-info {
-    font-size: 1rem;
-    text-align: right;
-}
-
-.header-contact-info p {
-    margin: 0;
-    line-height: 1.6;
-}
-
-/* Стили для карусели */
-.carousel {
-    width: 100%;
-    height: 400px;
-    background-color: #E0E0E0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.info {
-    padding: 40px;
-    text-align: center;
-}
-
-.test-options {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.test-card {
-    background-color: #F0F0F0;
-    padding: 20px;
-    width: 45%;
-    text-align: center;
-    border: 2px solid #4CAF50;
-    border-radius: 8px;
-}
-
-.subject-cards {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
-}
-
-.subject-card {
-    width: 30%;
-    background-color: #F0F0F0;
-    padding: 20px;
-    text-align: center;
-    border: 2px solid #4CAF50;
-    border-radius: 8px;
-}
-
-/* Мобильные стили */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .navbar__menu ul {
-        flex-direction: column;
-    }
-
-    .test-options, .subject-cards {
-        flex-direction: column;
-    }
-
-    .test-card, .subject-card {
-        width: 90%;
-        margin-bottom: 20px;
-    }
+#carouselExample {
+  margin: 2rem auto;
+  width: 80%;
 }

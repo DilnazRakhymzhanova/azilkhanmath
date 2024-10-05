@@ -27,7 +27,7 @@ header .nav-link:hover {
 
 /* Стили для карусели */
 .carousel {
-    margin-bottom: 30px; /* Отступ между каруселью и остальной страницей */
+    margin-bottom: 70px; /* Отступ между каруселью и остальной страницей */
 }
 
 .carousel-inner img {

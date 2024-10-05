@@ -238,7 +238,7 @@ function showQuestion() {
     questionObj.options.forEach((option) => {
         const optionButton = document.createElement('button');
         optionButton.textContent = option.answer;
-        optionButton.className = 'btn btn-primary option-button'; // Добавляем класс для стилизации
+        optionButton.className = 'answer'; // Добавляем класс для стилизации
         optionButton.onclick = () => checkAnswer(option.isCorrect); // Обработка клика на ответ
         optionsContainer.appendChild(optionButton);
     });

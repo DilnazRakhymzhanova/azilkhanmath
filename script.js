@@ -1,7 +1,3 @@
-let currentQuestions = [];
-let currentQuestionIndex = 0;
-let score = 0;
-
 // Объект с вопросами
 const allQuestions = {
     level1: [
@@ -152,70 +148,58 @@ const allQuestions = {
 };
 
 
-// Функция для инициализации теста
+let currentQuestions = [];
+let currentQuestionIndex = 0;
+let score = 0;
+
 function startTest(level) {
-    currentQuestions = allQuestions[level]; // Получаем вопросы для выбранного уровня
-    loadQuestion();
+    currentQuestions = allQuestions[level];
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById('test-section').style.display = 'block';
+    document.getElementById('start-section').style.display = 'none';
+    showQuestion();
 }
 
-function loadQuestion() {
-    if (currentQuestionIndex >= currentQuestions.length) return;
+function showQuestion() {
+    if (currentQuestionIndex >= currentQuestions.length) {
+        showResults();
+        return;
+    }
 
-    const currentQuestion = currentQuestions[currentQuestionIndex];
-    document.getElementById("question").innerText = currentQuestion.question;
-    const optionsContainer = document.getElementById("options");
-    optionsContainer.innerHTML = '';
+    const questionObj = currentQuestions[currentQuestionIndex];
+    document.getElementById('question-text').textContent = questionObj.question;
 
-    currentQuestion.options.forEach((option, index) => {
-        optionsContainer.innerHTML += `
-            <button class="btn btn-primary" onclick="selectOption(${index})">${option.answer}</button>
-        `;
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = ''; // Очищаем предыдущие варианты
+
+    questionObj.options.forEach((option, index) => {
+        const optionButton = document.createElement('button');
+        optionButton.textContent = option.answer;
+        optionButton.onclick = () => checkAnswer(option.isCorrect);
+        optionsContainer.appendChild(optionButton);
     });
-
-    // Обновляем видимость кнопок
-    document.getElementById("prev-button").style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
-    document.getElementById("next-button").style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'none' : 'inline-block';
-    document.getElementById("submit-button").style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
 }
 
-function selectOption(index) {
-    const selectedOption = currentQuestions[currentQuestionIndex].options[index];
-    if (selectedOption.isCorrect) {
+function checkAnswer(isCorrect) {
+    if (isCorrect) {
         score++;
     }
-    nextQuestion();
-}
-
-function nextQuestion() {
-    if (currentQuestionIndex < currentQuestions.length - 1) {
-        currentQuestionIndex++;
-        loadQuestion();
-    } else {
-        showResults();
-    }
-}
-
-function prevQuestion() {
-    if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        loadQuestion();
-    }
-}
-
-function submitQuiz() {
-    showResults();
+    currentQuestionIndex++;
+    showQuestion();
 }
 
 function showResults() {
-    document.getElementById("quiz-form").style.display = 'none';
-    document.getElementById("results").style.display = 'block';
-    document.getElementById("correct-progress").style.width = `${(score / currentQuestions.length) * 100}%`;
-    document.getElementById("incorrect-progress").style.width = `${((currentQuestions.length - score) / currentQuestions.length) * 100}%`;
+    document.getElementById('test-section').style.display = 'none';
+    const resultMessage = `Вы ответили правильно на ${score} из ${currentQuestions.length} вопросов.`;
+    document.getElementById('result-message').textContent = resultMessage;
+    document.getElementById('result-section').style.display = 'block';
 }
 
 function restartTest() {
+    document.getElementById('result-section').style.display = 'none';
+    document.getElementById('start-section').style.display = 'block';
+    currentQuestions = [];
     currentQuestionIndex = 0;
     score = 0;
-    loadQuestion();
 }
-

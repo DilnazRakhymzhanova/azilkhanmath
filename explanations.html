@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Объяснения - MATH LEARNING</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Темы | AZIMATH</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="navbar__logo">
-                <a href="index.html">MATH LEARNING</a>
-            </div>
-            <nav class="navbar__menu">
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="test.html">Тесты по математике</a></li>
-                    <li><a href="explanations.html">Объяснения</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
-                </ul>
-            </nav>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">AZIMATH</a>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="test.html">Тесты</a>
+            </li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-        <section class="explanations">
-            <h1>Объяснение ответов на тест</h1>
-            <p>Здесь вы найдете объяснения к каждому вопросу, чтобы лучше понять, как решать задачи с дробями.</p>
+  <!-- Scrollspy for explanations -->
+  <div class="row mt-4">
+    <div class="col-4">
+      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#item-1">Тема 1</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-3 my-1" href="#item-1-1">Тема 1.1</a>
+            <a class="nav-link ms-3 my-1" href="#item-1-2">Тема 1.2</a>
+          </nav>
+          <a class="nav-link" href="#item-2">Тема 2</a>
+          <a class="nav-link" href="#item-3">Тема 3</a>
+        </nav>
+      </nav>
+    </div>
 
-            <div class="explanation-item">
-                <h2>1. Что такое 1/2 + 1/4?</h2>
-                <p>Правильный ответ: 3/4. Для сложения дробей необходимо привести их к общему знаменателю. Общий знаменатель для 2 и 4 — это 4. Следовательно, 1/2 превращается в 2/4, а 1/4 остается 1/4. Теперь можно сложить: 2/4 + 1/4 = 3/4.</p>
-            </div>
+    <div class="col-8">
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+        <div id="item-1">
+          <h4>Тема 1</h4>
+          <p>Объяснение темы 1...</p>
+        </div>
+        <div id="item-1-1">
+          <h5>Тема 1.1</h5>
+          <p>Объяснение подтемы 1.1...</p>
+        </div>
+        <div id="item-1-2">
+          <h5>Тема 1.2</h5>
+          <p>Объяснение подтемы 1.2...</p>
+        </div>
+        <div id="item-2">
+          <h4>Тема 2</h4>
+          <p>Объяснение темы 2...</p>
+        </div>
+        <div id="item-3">
+          <h4>Тема 3</h4>
+          <p>Объяснение темы 3...</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-            <div class="explanation-item">
-                <h2>2. Что такое 3/5 - 1/5?</h2>
-                <p>Правильный ответ: 2/5. Для вычитания дробей с одинаковыми знаменателями просто вычитаем числители: 3 - 1 = 2. Таким образом, результат будет 2/5.</p>
-            </div>
+  <!-- Footer -->
+  <footer class="bg-light p-4 text-center">
+    <p>&copy; 2024 AZIMATH</p>
+  </footer>
 
-            <!-- Добавляйте больше объяснений к другим вопросам -->
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

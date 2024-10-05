@@ -1,1 +1,39 @@
+[
+    {
+        "question": "Вопрос 1: Какой результат 2 + 2?",
+        "options": [
+            { "answer": "3", "isCorrect": false },
+            { "answer": "4", "isCorrect": true },
+            { "answer": "5", "isCorrect": false },
+            { "answer": "6", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Вопрос 2: Какой результат 5 * 3?",
+        "options": [
+            { "answer": "15", "isCorrect": true },
+            { "answer": "10", "isCorrect": false },
+            { "answer": "20", "isCorrect": false },
+            { "answer": "25", "isCorrect": false }
+        ]
+    }
+    {
+        "question": "Вопрос 1: Какой результат 3 + 2?",
+        "options": [
+            { "answer": "3", "isCorrect": false },
+            { "answer": "4", "isCorrect": false },
+            { "answer": "5", "isCorrect": true },
+            { "answer": "6", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Вопрос 2: Какой результат 8 * 3?",
+        "options": [
+            { "answer": "15", "isCorrect": false },
+            { "answer": "24", "isCorrect": true },
+            { "answer": "20", "isCorrect": false },
+            { "answer": "25", "isCorrect": false }
+        ]
+    }
+]
 

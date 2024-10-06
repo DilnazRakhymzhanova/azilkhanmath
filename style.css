@@ -63,7 +63,7 @@ header .nav-link:hover {
 #about {
     background-color: #f8f9fa; /* Цвет фона для секции "О нас" */
     border-radius: 8px; /* Закругленные углы */
-    padding: 20px; /* Отступы внутри секции */
+    padding: 10px; /* Отступы внутри секции */
 }
 
 /* Стили для списка тестов */

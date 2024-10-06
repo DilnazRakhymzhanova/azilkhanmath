@@ -119,6 +119,7 @@ header .nav-link:hover {
  .option-button {
     width: 30%; /* Ширина кнопки */
     margin-bottom: 50px;
+    margin-left: 40px;
     font-size: 16px; /* Размер текста на кнопках */
     background-color: #001F3F; /* Цвет кнопок управления */
     color: white; /* Цвет текста на кнопках */
@@ -129,7 +130,7 @@ header .nav-link:hover {
         }
 
 /* Кнопки управления */
-#prev-button, #next-button, #submit-button {
+#prev-button, #next-button, #submit-button, #restart-button {
     padding: 10px 20px; /* Отступы внутри кнопок */
     margin: 10px; /* Отступ между кнопками */
     font-size: 16px; /* Размер текста на кнопках */

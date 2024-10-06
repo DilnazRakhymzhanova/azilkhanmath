@@ -117,7 +117,7 @@ header .nav-link:hover {
 
 
  .option-button {
-    width: 30%; /* Ширина кнопки */
+    width: 10%; /* Ширина кнопки */
     margin-bottom: 50px;
     margin-left: 40px;
     font-size: 16px; /* Размер текста на кнопках */
